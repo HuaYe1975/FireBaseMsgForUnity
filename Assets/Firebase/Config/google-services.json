@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "120906142394",
+    "firebase_url": "https://marble-test-a9556.firebaseio.com",
+    "project_id": "marble-test-a9556",
+    "storage_bucket": "marble-test-a9556.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120906142394:android:1856cf6e44041385",
+        "android_client_info": {
+          "package_name": "jp.co.adglobe.marble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120906142394-cpjfphlmt8o2713nkon6hq1t97isd99e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTRiVtTHU6k5q-Lxs1D_b105D0UPH2zAc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
