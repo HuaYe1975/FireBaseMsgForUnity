@@ -64,7 +64,7 @@ public class FirebaseAssetProcessor : AssetPostprocessor
 
     private static void updateXMLInnerText(XmlNode node, string attributeName, string value)
     {
-        if (node.Name == "string" && node.Attributes.GetNamedItem("name").Value == "default_web_client_id")
+        if (node.Name == "string" && node.Attributes.GetNamedItem("name").Value == attributeName)
         {
             node.InnerText = value;
         }
