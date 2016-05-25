@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "120906142394",
-    "firebase_url": "https://marble-test-a9556.firebaseio.com",
-    "project_id": "marble-test-a9556",
-    "storage_bucket": "marble-test-a9556.appspot.com"
+    "project_number": "xxxxxx",
+    "firebase_url": "https://xxxxxx.firebaseio.com",
+    "project_id": "xxxxxxx",
+    "storage_bucket": "xxxxxxx.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:120906142394:android:1856cf6e44041385",
+        "mobilesdk_app_id": "xxxxxxxxxx",
         "android_client_info": {
-          "package_name": "jp.co.adglobe.marble"
+          "package_name": "xxxxxx"
         }
       },
       "oauth_client": [
         {
-          "client_id": "120906142394-cpjfphlmt8o2713nkon6hq1t97isd99e.apps.googleusercontent.com",
+          "client_id": "xxxxxx",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTRiVtTHU6k5q-Lxs1D_b105D0UPH2zAc"
+          "current_key": "xxxxx"
         }
       ],
       "services": {
