@@ -1,5 +1,5 @@
 # FireBaseMsgForUnity
-Firebase Message For Unity
+Firebase Message (Push notification) For Unity
 # How to use it
 
 Set correct bundle ID in Unity's player settings
