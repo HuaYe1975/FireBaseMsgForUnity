@@ -50,6 +50,8 @@ public class FirebasePostBuildProcessor : MonoBehaviour
         // add frameworks
 		proj.AddFrameworkToProject(target, "AdSupport.framework", true);
 		proj.AddFrameworkToProject(target, "AddressBook.framework", true);
+		proj.AddFrameworkToProject(target, "libsqlite3.0.dylib", false);
+
     
 		string[] plistFiles = Directory.GetFiles(Application.dataPath, "GoogleService-Info.plist", SearchOption.AllDirectories);
 		foreach (string customPlistPath in plistFiles)

@@ -92,6 +92,7 @@ extern "C" {
     void _Firebase_Init();
     void _Firebase_Connect();
     void _Firebase_Disconnect();
+    char* _Firebase_Token();
 }
 
 void _Firebase_Init()
@@ -107,4 +108,16 @@ void _Firebase_Connect()
 void _Firebase_Disconnect()
 {
     [[FireBaseMessageController sharedInstance] disconnect];
+}
+
+char* _Firebase_Token()
+{
+    NSString *token = [[FIRInstanceID instanceID] token];
+    if (!token.length)
+    {
+        return NULL;
+    }
+    const char* str = [token UTF8String];
+    char *ret_val = strdup(str);
+    return ret_val;
 }
