@@ -45,7 +45,14 @@ public static class FireBaseWrapper {
 
 		#if UNITY_IPHONE && !UNITY_EDITOR
 		token = _Firebase_Token();
-		#else
+		#elif UNITY_ANDROID && !UNITY_EDITOR
+		using (AndroidJavaClass cls_FirebaseInstanceID = new AndroidJavaClass("com.google.firebase.iid.FirebaseInstanceId")) {
+
+			using (AndroidJavaObject obj_FirebaseInstanceID = cls_FirebaseInstanceID.CallStatic<AndroidJavaObject>("getInstance")) {
+				
+				token = obj_FirebaseInstanceID.Call<string>("getToken");
+			}
+		}
 		#endif
 		return token;
 	}
