@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		tokenLabel.text = FireBaseWrapper.Firebase_Token ();
+		if (string.IsNullOrEmpty (tokenLabel.text)) {
+			tokenLabel.text = FireBaseWrapper.Firebase_Token ();
+			Debug.Log (tokenLabel.text);
+		}
 	}
 }

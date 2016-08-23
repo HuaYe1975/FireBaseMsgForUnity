@@ -2,6 +2,9 @@
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.Collections;
+using System.Xml;
+
+
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 #endif
@@ -62,6 +65,51 @@ public class FirebasePostBuildProcessor : MonoBehaviour
         File.WriteAllText(projPath, proj.WriteToString());
     }
 
+	private static void MergePLists(string path)
+	{
+		// Add url schema to plist file
+		string plistPath = path + "/Info.plist";
+		Debug.Log("Open main plist at : " + plistPath);
+
+		PlistDocument plist = new PlistDocument();
+		plist.ReadFromString(File.ReadAllText(plistPath));
+
+		// Get root
+		PlistElementDict rootDict = plist.root;
+
+		string[] plistFiles = Directory.GetFiles(Application.dataPath, "Info.plist", SearchOption.AllDirectories);
+		foreach (string customPlistPath in plistFiles)
+		{
+			if (customPlistPath == plistPath)
+			{
+				continue;
+			}
+			if (customPlistPath.Contains("/Editor/"))
+			{
+				continue;
+			}
+
+			Debug.Log("add keys from custom plist at path : " + customPlistPath);
+			PlistDocument customPlist = new PlistDocument();
+			customPlist.ReadFromString(File.ReadAllText(customPlistPath));
+			PlistElementDict customRootDict = customPlist.root;
+			foreach (var pair in customRootDict.values)
+			{
+				if (rootDict.values.ContainsKey(pair.Key))
+				{
+					rootDict.values[pair.Key] = pair.Value;
+				}
+				else
+				{
+					rootDict.values.Add(pair.Key, pair.Value);
+				}
+			}
+		}
+
+		// Write to file
+		File.WriteAllText(plistPath, plist.WriteToString());
+	}
+
     // a normal post process method which is executed by Unity
     [PostProcessBuild]
     public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
@@ -69,7 +117,8 @@ public class FirebasePostBuildProcessor : MonoBehaviour
 
         Debug.Log("OnPostprocessBuildiOS");
 
-        AddFrameworks(path);
+		AddFrameworks(path);
+		MergePLists(path);
     }
 #endif
 }
